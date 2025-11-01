@@ -23,7 +23,7 @@ This MCP server provides Discord integration for AI assistants like Claude Deskt
 ### 15 Tools
 
 #### 📨 Message Operations
-- **send_message** - Send messages with file attachments (images, documents, etc.)
+- **send_message** - Send messages with file attachments and control link preview embeds
 - **get_messages** - Retrieve message history with user display names
 - **add_reaction** - Add emoji reactions (Unicode and custom emojis)
 - **remove_reaction** - Remove reactions from messages
@@ -132,6 +132,7 @@ Once configured, you can interact with Discord through Claude Desktop naturally:
 "Add a 👍 reaction to message ID 123456789"
 "Send a DM to user ID 987654321 with an image attachment"
 "List all members in the Development server"
+"Send a message with this link but don't show the preview: https://example.com"
 ```
 
 ## Documentation

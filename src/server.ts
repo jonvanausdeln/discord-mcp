@@ -234,6 +234,11 @@ class DiscordMCPServer {
                   { required: ["path"] }
                 ]
               }
+            },
+            suppress_embeds: {
+              type: "boolean",
+              description: "Suppress automatic link previews/embeds in the message",
+              default: false
             }
           },
           required: ["channel_id", "content"]

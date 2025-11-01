@@ -1,4 +1,4 @@
-import { Client, Message, Channel, TextChannel, DMChannel, NewsChannel, VoiceChannel, CategoryChannel, Guild, GatewayIntentBits, NonThreadGuildBasedChannel, Collection } from 'discord.js';
+import { Client, Message, Channel, TextChannel, DMChannel, NewsChannel, VoiceChannel, CategoryChannel, Guild, GatewayIntentBits, NonThreadGuildBasedChannel, Collection, MessageFlags } from 'discord.js';
 import { DiscordErrorHandler } from './errorHandler.js';
 import { RetryManager } from '../utils/retry.js';
 import { Logger } from '../utils/logger.js';
@@ -160,6 +160,12 @@ export class DiscordClient implements DiscordClientWrapper {
           attachmentCount: attachments.length,
           contentLength: options.content.length
         });
+      }
+
+      // Handle suppress_embeds flag
+      if (options.suppress_embeds) {
+        messageOptions.flags = MessageFlags.SuppressEmbeds;
+        this.logger.info('Suppressing embeds for message', { channelId });
       }
 
       // Handle reply

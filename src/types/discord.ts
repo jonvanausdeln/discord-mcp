@@ -40,6 +40,7 @@ export interface SendMessageOptions {
   reply_to?: string;
   thread_id?: string;
   files?: FileAttachment[];       // File attachments
+  suppress_embeds?: boolean;      // Suppress link embeds/previews
 }
 
 export interface CreateThreadOptions {

@@ -24,7 +24,8 @@ const SendMessageSchema = z.object({
   channel_id: z.string().min(1, 'Channel ID is required'),
   content: z.string().min(1, 'Message content is required').max(2000, 'Message content too long'),
   reply_to: z.string().optional(),
-  files: z.array(FileAttachmentSchema).max(10, 'Maximum 10 files allowed').optional()
+  files: z.array(FileAttachmentSchema).max(10, 'Maximum 10 files allowed').optional(),
+  suppress_embeds: z.boolean().optional()
 });
 
 const GetMessagesSchema = z.object({
@@ -76,7 +77,8 @@ export class SendMessageTool extends DiscordMCPTool {
       const message = await this.discord.sendMessage(validatedParams.channel_id, {
         content: validatedParams.content,
         reply_to: validatedParams.reply_to,
-        files: validatedParams.files as FileAttachment[]
+        files: validatedParams.files as FileAttachment[],
+        suppress_embeds: validatedParams.suppress_embeds
       });
 
       return {
